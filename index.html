@@ -8,7 +8,8 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
         <style>
         html, body, #map {
             width: 100%;
@@ -17,7 +18,7 @@
             margin: 0;
         }
         </style>
-        <title></title>
+        <title>Early 1800s Landcover in Seven Counties</title>
     </head>
     <body>
         <div id="map">
@@ -31,7 +32,7 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
         <script src="data/Clipped_0.js"></script>
         <script>
         var highlightLayer;
@@ -50,10 +51,10 @@
             }
         }
         var map = L.map('map', {
-            zoomControl:true, maxZoom:28, minZoom:3
+            zoomControl:true, maxZoom:18, minZoom:1
         })
         var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        map.attributionControl.setPrefix('<a href="https://clearinghouse.isgs.illinois.edu/data/landcover/illinois-landcover-early-1800s" target="_blank">ClearingHouseISGS</a> &middot; <a href="https://github.com/UnderJollyRoger/EarlyIllinoisLandcover" target="_blank">PilbeaMaps</a> &middot; <a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
@@ -228,10 +229,15 @@
         bounds_group.addLayer(layer_Clipped_0);
         map.addLayer(layer_Clipped_0);
         var osmGeocoder = new L.Control.Geocoder({
-            collapsed: true,
-            position: 'topleft',
-            text: 'Search',
-            title: 'Testing'
+            position: 'topright',
+    collapsed: false,
+    placeholder: 'Search...',
+    defaultMarkGeocode: true,
+    geocoder: L.Control.Geocoder.mapbox('pk.eyJ1IjoiamVua2tpIiwiYSI6ImNrYXp4dXZhYzAzMWkyem54ZnM5cGdnY3AifQ.Cns_W8Pz6zeTSXgby-uvTg', {
+      geocodingQueryParams: {
+        country: 'us'
+      }
+    })
         }).addTo(map);
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .className += ' fa fa-search';
