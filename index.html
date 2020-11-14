@@ -72,6 +72,17 @@
                 },
                 mouseover: highlightFeature,
             });
+            
+                    // load a tile layer
+        L.tileLayer('https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=XnPHp55kxMHWbVc3q0BT',
+            {
+                attribution: '<a>Pilbeamaps 2020</a><a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+                maxZoom: 18,
+                tileSize: 512,
+                zoomOffset: -1,
+                opacity: 40
+            }).addTo(map);
+            
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>Landcover</strong><br />' + (feature.properties['Landcover'] !== null ? autolinker.link(feature.properties['Landcover'].toLocaleString()) : '') + '</td>\
