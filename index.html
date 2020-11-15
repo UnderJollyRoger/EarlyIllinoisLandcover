@@ -36,6 +36,11 @@
         <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
         <script src="data/Clipped_0.js"></script>
         <script>
+            
+                    title.update = function () {
+            this._div.innerHTML = '<h2>Seven County Landcover Early 1800s</h2>';
+        };
+        title.addTo(map);
 
         var map = L.map('map', {
             zoomControl:true, maxZoom:18, minZoom:1
