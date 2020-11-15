@@ -41,27 +41,7 @@
             zoomControl:true, maxZoom:18, minZoom:1
         });
             
-            // Create a new renderer as follows (use any options as necessary):
-var streetLabelsRenderer = new L.StreetLabels({
-      collisionFlg : true,
-      propertyName : 'name',
-      showLabelIf: function(layer) {
-        return true; //layer.properties.type == "primary";
-      },
-      fontStyle: {
-        dynamicFontSize: false,
-        fontSize: 10,
-        fontSizeUnit: "px",
-        lineWidth: 4.0,
-        fillStyle: "black",
-        strokeStyle: "white",
-      },
-    })
 
-// Create a new map and attach the renderer created above:
-var map = new L.Map('map', {
-    renderer : streetLabelsRenderer, //Custom Canvas Renderer
-});
                 L.tileLayer(
             'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
             maxZoom: 18,
