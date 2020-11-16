@@ -83,7 +83,7 @@
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     tileSize: 512,
     maxZoom: 18,
-    minZoom: 5,
+    minZoom: 15,
     zoomOffset: -1,
     id: 'mapbox/satellite-streets-v11',
     accessToken: 'pk.eyJ1IjoiamVua2tpIiwiYSI6ImNraGlseDI5aDFwY2oycHQ5dm8zZjJ6ODEifQ.wQNDqZbxUFYU8l6s7hYvWw'
@@ -94,7 +94,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
         legend.onAdd = function (map) {
             var div = L.DomUtil.create("div", "legend");
-            div.innerHTML += "<h5>1804-1843 N/E Illinois Landcover</h5>";
+            div.innerHTML += "<h5>1804-1843 N/E<br>Illinois Landcover</h5>";
             div.innerHTML += '<i style="background: #d4ba7a"></i><span>barrens</span><br>';
             div.innerHTML += '<i style="background: #7e9a6a"></i><span>bottomland</span><br>';
             div.innerHTML += '<i style="background: #cda09f"></i><span>cultural</span><br>';
