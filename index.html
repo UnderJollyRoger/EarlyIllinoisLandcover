@@ -18,6 +18,44 @@
             padding: 0;
             margin: 0;
         }
+            
+         /*Legend specific*/
+        .legend {
+            padding: 6px 8px;
+            font: 14px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255, 255, 255, 0.8);
+            /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
+            /*border-radius: 5px;*/
+            line-height: 24px;
+            color: #555;
+        }
+
+        .legend h4 {
+            text-align: center;
+            font-size: 16px;
+            margin: 2px 12px 8px;
+            color: #777;
+        }
+
+        .legend span {
+            position: relative;
+            bottom: 3px;
+        }
+
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin: 0 8px 0 0;
+            opacity: 0.7;
+        }
+
+        .legend i.icon {
+            background-size: 18px;
+            background-color: rgba(255, 255, 255, 1);
+        }
+            
         </style>
         <title>Early 1800s Landcover in Seven Counties</title>
     </head>
@@ -44,11 +82,35 @@
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     tileSize: 512,
-    maxZoom: 18,
+    maxZoom: 18, 
     zoomOffset: -1,
     id: 'mapbox/satellite-streets-v11',
     accessToken: 'pk.eyJ1IjoiamVua2tpIiwiYSI6ImNraGlseDI5aDFwY2oycHQ5dm8zZjJ6ODEifQ.wQNDqZbxUFYU8l6s7hYvWw'
 }).addTo(map);
+            
+            /*Legend specific*/
+        var legend = L.control({ position: "bottomleft" });
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create("div", "legend");
+            div.innerHTML += "<h4>LEGEND</h4>";
+            div.innerHTML += '<i style="background: #d4ba7a"></i><span>barrens</span><br>';
+            div.innerHTML += '<i style="background: #7e9a6a"></i><span>bottomland</span><br>';
+            div.innerHTML += '<i style="background: #cda09f"></i><span>cultural</span><br>';
+            div.innerHTML += '<i style="background: #a1b48b"></i><span>forest</span><br>';
+            div.innerHTML += '<i style="background: #d3884b"></i><span>marsh</span><br>';
+            div.innerHTML += '<i style="background: #afabc2"></i><span>other wetland</span><br>';
+            div.innerHTML += '<i style="background: #e2deca"></i><span>prairie</span><br>';
+            div.innerHTML += '<i style="background: #7ecbd1"></i><span>slough</span><br>';
+            div.innerHTML += '<i style="background: #e3d16f"></i><span>swamp</span><br>';
+            div.innerHTML += '<i style="background: #a44437"></i><span>topo/geo</span><br>';
+            div.innerHTML += '<i style="background: #5094b1"></i><span>water</span><br>';
+            div.innerHTML += '<i style="background: #ae3e64"></i><span>wet prairie</span><br>';
+
+            return div;
+        };
+
+        legend.addTo(map);
             
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="http://www.esri.com/" target="_blank">Esri</a> &middot; <a href="https://clearinghouse.isgs.illinois.edu/data/landcover/illinois-landcover-early-1800s" target="_blank">ClearingHouseISGS</a> &middot; <a href="https://github.com/UnderJollyRoger/EarlyIllinoisLandcover" target="_blank">PilbeaMaps</a> &middot; <a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
