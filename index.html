@@ -72,7 +72,7 @@
         <script src="js/labels.js"></script>
         <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
         <script src="data/Clipped_0.js"></script>
-        <script src="jquery-3.5.0.min.js"></script>
+        <script src="js/jquery-3.5.0.min.js"></script>
         <script>
 
         var map = L.map('map', {
@@ -85,7 +85,7 @@
             "weight": 1,
             "opacity": 1
         };
-        $.getJSON("illinois_boundary.geojson", function (illinois) {
+        $.getJSON("data/illinois_boundary.geojson", function (illinois) {
             L.geoJson(illinois, {
                 style: mpStyle
             }).addTo(map);
@@ -97,7 +97,7 @@
             "weight": 1,
             "opacity": 1
         };
-        $.getJSON("sevencounties.geojson", function (counties) {
+        $.getJSON("data/sevencounties.geojson", function (counties) {
             L.geoJson(counties, {
                 style: mpStyle
             }).addTo(map);
