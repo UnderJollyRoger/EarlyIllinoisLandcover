@@ -66,19 +66,43 @@
         <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
-        
         <script src="js/Autolinker.min.js"></script>
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
         <script src="data/Clipped_0.js"></script>
+        <script src="jquery-3.5.0.min.js"></script>
         <script>
 
         var map = L.map('map', {
             zoomControl:true, maxZoom:18, minZoom:1
         });
             
+                    //illinois boundary
+        var mpStyle = {
+            "color": "#2a2a2e",
+            "weight": 1,
+            "opacity": 1
+        };
+        $.getJSON("illinois_boundary.geojson", function (illinois) {
+            L.geoJson(illinois, {
+                style: mpStyle
+            }).addTo(map);
+        });
+
+        //seven counties
+        var mpStyle = {
+            "color": "#2a2a2e",
+            "weight": 1,
+            "opacity": 1
+        };
+        $.getJSON("sevencounties.geojson", function (counties) {
+            L.geoJson(counties, {
+                style: mpStyle
+            }).addTo(map);
+        });
+
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     tileSize: 512,
