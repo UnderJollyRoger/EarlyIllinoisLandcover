@@ -31,9 +31,18 @@
             color: #555;
         }
 
-        .legend h4 {
-            text-align: center;
+       .legend h4 {
+            text-align: left;
+            line-height: 16px;
             font-size: 16px;
+            margin: 2px 12px 8px;
+            color: #777;
+        }
+
+        .legend h6 {
+            text-align: left;
+            line-height: 12px;
+            font-size: 10px;
             margin: 2px 12px 8px;
             color: #777;
         }
@@ -118,7 +127,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
         legend.onAdd = function (map) {
             var div = L.DomUtil.create("div", "legend");
-            div.innerHTML += "<small><b><p>1804-1843 N/E<br>Illinois Landcover</p></b></small>";
+            div.innerHTML += "<h4><b>1804-1843 N/E<br>Illinois Landcover</b><h4>";
             div.innerHTML += '<i style="background: #d4ba7a"></i><span>barrens</span><br>';
             div.innerHTML += '<i style="background: #7e9a6a"></i><span>bottomland</span><br>';
             div.innerHTML += '<i style="background: #cda09f"></i><span>cultural</span><br>';
@@ -131,6 +140,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
             div.innerHTML += '<i style="background: #a44437"></i><span>topo/geo</span><br>';
             div.innerHTML += '<i style="background: #5094b1"></i><span>water</span><br>';
             div.innerHTML += '<i style="background: #ae3e64"></i><span>wet prairie</span><br>';
+            div.innerHTML += "<h6><b>*zoom in close to see<br>underlying satellite imagery</b><h6>";
 
             return div;
         };
