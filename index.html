@@ -69,6 +69,7 @@
         <title>Early 1800s Landcover in Seven Counties</title>
     </head>
     <body>
+        <button type="button" onclick="toggleLegend();">Legend</button>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
@@ -144,6 +145,19 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
             return div;
         };
+            
+        showLegend = true;  // default value showing the legend
+
+        var toggleLegend = function () {
+            if (showLegend === true) {
+                /* use jquery to select your DOM elements that has the class 'legend' */
+                $('.legend').hide();
+                showLegend = false;
+            } else {
+                $('.legend').show();
+                showLegend = true;
+            }
+        }
 
         legend.addTo(map);
             
