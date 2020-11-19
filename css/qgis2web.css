@@ -66,6 +66,13 @@
             border-radius: 5px;
             max-width: 40%;
         }
+        
+         /*.leaflet-touch .leaflet-control-layers,
+        .leaflet-touch .leaflet-bar,
+        .leaflet-control-search,
+        .leaflet-control-measure {
+            border: 3px solid rgba(255,255,255,.4) !important;
+        }*/
 
         .leaflet-control-attribution a {
             color: #0078A8 !important;
