@@ -65,11 +65,19 @@
             background-color: rgba(255, 255, 255, 1);
         }
             
+        #legendButton {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            z-index: 500;
+        }
+            
         </style>
         <title>Early 1800s Landcover in Seven Counties</title>
     </head>
     <body>
-        <button type="button" onclick="toggleLegend();">Legend</button>
+        <button id="legendButton" onclick="toggleLegend();">Legend</button>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
@@ -338,8 +346,8 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
         bounds_group.addLayer(layer_Clipped_0);
         map.addLayer(layer_Clipped_0);
         var osmGeocoder = new L.Control.Geocoder({
-            position: 'topright',
-    collapsed: false,
+            position: 'topleft',
+    collapsed: true,
     placeholder: 'Search address here...',
     defaultMarkGeocode: true,
     geocoder: L.Control.Geocoder.mapbox('pk.eyJ1IjoiamVua2tpIiwiYSI6ImNrYXp4dXZhYzAzMWkyem54ZnM5cGdnY3AifQ.Cns_W8Pz6zeTSXgby-uvTg', {
